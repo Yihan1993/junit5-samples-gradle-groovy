@@ -21,9 +21,15 @@ version = '0.0.1'
 archivesBaseName = 'Test Junit'
 
 dependencies {
-	implementation(localGroovy())
+    implementation 'org.codehaus.groovy:groovy-all:3.0.7'
+    implementation 'org.codehaus.groovy:groovy-dateutil:3.0.7'
+    testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
+    testImplementation 'junit:junit:4.12'
 	testImplementation(platform('org.junit:junit-bom:5.7.1'))
-	testImplementation('org.junit.jupiter:junit-jupiter')
+	testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.vintage:junit-vintage-engine:5.4.1'
+    testImplementation 'org.slf4j:slf4j-api:1.7.25'
+    testImplementation 'org.slf4j:slf4j-simple:1.7.25'
 }
 
 test {
