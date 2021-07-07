@@ -10,15 +10,15 @@ class CityInfoTest extends Specification {
     def "assertion tips"() {
 
         given:
-            def cityList = new LinkedList<CityInfo>()
+        def cityList = new LinkedList<CityInfo>()
 
         when:
-            cityList.add(new CityInfo("London", 1000))
-            cityList.add(new CityInfo("Hamburg",  500))
-            cityList.add(new CityInfo("Paris",  1400))
+        cityList.add(new CityInfo("London", 1000))
+        cityList.add(new CityInfo("Hamburg",  500))
+        cityList.add(new CityInfo("Paris",  1400))
         
         then:
-            cityList*.cityName ==  ["London", "Hamburg", "Paris"]
+        cityList*.cityName ==  ["London", "Hamburg", "Paris"]
     }
 
     def "cleanup"() {

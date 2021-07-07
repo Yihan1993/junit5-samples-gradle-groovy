@@ -10,46 +10,41 @@ class SampleMockSpec extends Specification {
 
     def "sample mock based test"() {
 
-        given:
-
         when:
-            app.calculateStudentGrade("12345")
+        app.calculateStudentGrade("123")
 
         then:
-            // validate interaction with mock
-            1*mockedDatabase.getStudentScores("12345")
-            1*mockedDatabase.updateStudentGrade("12345", "C")
+        // validate interaction with mock
+        1*mockedDatabase.getStudentGrade("123")
+        1*mockedDatabase.getStudentScores("123")
+        1*mockedDatabase.updateStudentGrade("123", "C")
     }
 
     // argument matcher
 
     def "argument matchers generic"() {
 
-        given:
-
         when:
-            app.calculateStudentGrade("12345")
+        app.calculateStudentGrade("123")
 
         then:
-            // validate interaction with mock
-            1*mockedDatabase.getStudentScores(_ as String)
-            1*mockedDatabase.updateStudentGrade(_ as String, "C")
+        // validate interaction with mock
+        1*mockedDatabase.getStudentScores(_ as String)
+        1*mockedDatabase.updateStudentGrade(_ as String, "C")
     }
 
     // to validate the order of interactions
 
     def "argument matchers generic with order validations"() {
 
-        given:
-
         when:
-            app.calculateStudentGrade("12345")
+        app.calculateStudentGrade("123")
 
         then:
-            // validate interaction with mock
-            1*mockedDatabase.getStudentScores(_ as String)
+        // validate interaction with mock
+        1*mockedDatabase.getStudentScores(_ as String)
         
         then:
-            1*mockedDatabase.updateStudentGrade(_ as String, "C")
+        1*mockedDatabase.updateStudentGrade(_ as String, "C")
     }
 }

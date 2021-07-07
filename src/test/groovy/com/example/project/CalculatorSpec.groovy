@@ -5,13 +5,13 @@ class CalculatorSpec extends Specification {
     def "sample parameterized tests for calculator addition"() {
 
         given:
-            def cal = new Calculator()
+        def cal = new Calculator()
 
         when:
-            def result = cal.add(a, b)
+        def result = cal.add(a, b)
 
         then:
-            result == expectedOutput
+        result == expectedOutput
 
         where:
         // data-driven testing -tables & <<

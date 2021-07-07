@@ -23,6 +23,7 @@ archivesBaseName = 'Test Junit'
 dependencies {
     implementation 'org.codehaus.groovy:groovy-all:3.0.7'
     implementation 'org.codehaus.groovy:groovy-dateutil:3.0.7'
+    testImplementation 'org.mockito:mockito-core:2.28.2'
     testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
     testImplementation 'junit:junit:4.12'
 	testImplementation(platform('org.junit:junit-bom:5.7.1'))

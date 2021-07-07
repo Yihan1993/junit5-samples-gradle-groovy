@@ -13,11 +13,9 @@ public class StudentGradeCalculator {
 
     public String calculateStudentGrade(String studentId) {
 
-        String grade
-
-        grade = studentDatabase.getStudentGrade(studentId)
+        String grade = studentDatabase.getStudentGrade(studentId)
         if(grade != null && !grade.isEmpty()) {
-
+            println "with value"
             return grade
         }
 
@@ -26,7 +24,7 @@ public class StudentGradeCalculator {
         Float totalScore = 0F
 
         if(scoreList != null)
-            totalScore = scoreList.stream().reduce(Identity: 0F, (a, b) -> a + b)
+            scoreList.each { it -> totalScore += it }
 
         if(totalScore > 90) {
             grade = "A"
