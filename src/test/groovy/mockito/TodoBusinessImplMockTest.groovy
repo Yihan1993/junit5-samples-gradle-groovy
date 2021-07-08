@@ -4,6 +4,7 @@ import static groovy.test.GroovyAssert.*
 import org.junit.Test
 import mockito.*
 import static org.mockito.Mockito.*
+import org.mockito.Mockito
 
 
 public class TodoBusinessImplMockTest {
@@ -23,5 +24,29 @@ public class TodoBusinessImplMockTest {
             .retrieveTodosRelatedToSpring("dummy")
 
         assertEquals(2, filteredTodos.size())
+    }
+
+
+    @Test
+	public void letsTestDeleteNow() {
+		TodoService todoService = mock(TodoService.class)
+
+		List<String> allTodos = Arrays.asList("Learn Spring MVC",
+				"Learn Spring", "Happy functions")
+
+		when(todoService.retrieveTodos("Ranga")).thenReturn(allTodos)
+
+		TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoService)
+
+		todoBusinessImpl.deleteTodosNotRelatedToSpring("Ranga")
+
+		verify(todoService).deleteTodo("Happy functions")
+
+		verify(todoService, Mockito.never()).deleteTodo("Learn Spring MVC")
+
+		verify(todoService, Mockito.never()).deleteTodo("Learn Spring")
+
+		verify(todoService, Mockito.times(1)).deleteTodo("Happy functions")
+		// atLeastOnce, atLeast
     }
 }      
