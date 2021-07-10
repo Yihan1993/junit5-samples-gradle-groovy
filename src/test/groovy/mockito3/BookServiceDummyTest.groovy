@@ -6,12 +6,13 @@ import java.time.LocalDate
 import org.junit.Test
 import static org.junit.Assert.*
 
-public class BookServiceFakeTest {
+public class BookServiceDummyTest {
 
     @Test
-    public void testWithFakeClass() {
+    public void testWithDummyClass() {
         BookRepository bookRepository = new FakeBookRepository()
-        BookService bookService = new BookService(bookRepository)
+        EmailService emailService = new DummyEmailService()
+        BookService bookService = new BookService(bookRepository, emailService)
 
         bookService.addBook(new Book(
             "1234", "Mocktio In Action", 250, LocalDate.now()))
@@ -19,6 +20,5 @@ public class BookServiceFakeTest {
             "12345", "Junit 5 In Action", 200, LocalDate.now()))
 
         assertEquals(2, bookService.findNumerOfBooks())
-
     }
 }
