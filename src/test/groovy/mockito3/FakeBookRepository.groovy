@@ -17,4 +17,9 @@ public class FakeBookRepository implements BookRepository {
     public Collection<Book> findAll() {
         return bookStore.values()
     }
+
+    @Override
+    public List<Book> findNewBooks(int days) {
+        return null
+    }
 }

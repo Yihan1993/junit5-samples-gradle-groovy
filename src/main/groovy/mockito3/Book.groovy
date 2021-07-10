@@ -32,7 +32,7 @@ public class Book {
         this.title = title
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price
     }
 
